@@ -1,0 +1,146 @@
+common: 
+    search: 
+        xpath: "//input[contains(@id, 'search')]"
+        type: text
+
+amazon:
+    outer_envelope:
+        xpath: "//ul[@class='list-items']"
+        type: text
+    inner_envelope: 
+        xpath: "//div[contains(@class, 's-asin')]"
+        type: text
+    product:
+        price:
+            special: 
+                - xpath: "//span[contains(@class, 'a-color-price')]"
+                  click: ""
+                - xpath: "//span[@class='a-price']"
+                  click: "//a[normalize-space()='See All Buying Options']"
+            type: list-or
+
+        product_name:
+            xpath: "//span[@id='productTitle']"
+            type: text
+        product_features:
+            xpath: "//div[@id='feature-bullets']"
+            type: text
+        reviews: 
+            click: 
+                xpath: "//a[contains(@data-hook, 'see-all-reviews')]"
+                type: text
+            inner_envelope: 
+                xpath: "//div[@data-hook='review']"
+                type: text
+            review:
+                title:
+                    xpath: "//a[contains(@data-hook, 'review-title')]"
+                    type: text
+                score: 
+                    xpath: "//i[@data-hook='review-star-rating']"
+                    type: text
+                body: 
+                    xpath: "//span[contains(@data-hook, 'review-body') ]"
+                    type: text
+            next:
+                xpath: "//li[@class='a-last']"
+                type: text                
+            type: reviews
+            
+    next:
+        xpath: "//li[@class='a-last']"
+        type: text
+
+    
+aliexpress:
+    outer_envelope:
+        xpath: "//ul[@class='list-items']"
+        type: text
+    inner_envelope:
+        xpath: "//li[@class='list-item']"
+        type: text 
+    product:
+        price:
+            xpath: "//span[@itemprop='price']"
+            type: text
+        product_name:
+            xpath: "//div[@class='product-title']"
+            type: text
+        product_features:
+            xpath: "//div[@id='product-description']"
+            type: text
+    next: 
+        xpath: "//button[normalize-space()='Next']"
+        type: text
+
+bestbuy:
+    outer_envelope:
+        xpath: "//ul[@class='list-items']"
+        type: text
+    inner_envelope:
+        xpath: "//li[contains(@class,'sku-item') or contains(@class,'sponsored-listing')]"
+        type: text  
+    product:      
+        price:
+            xpath: "//div[contains(@class,'customer-price')]"
+            type: text
+        product_name:
+            xpath: "//div[@class='sku-title']"
+            type: text
+        product_features:
+            special: 
+                - xpath: "//div[@id='overview-accordion-content']" 
+                  click: "//span[normalize-space()='Overview']"
+                - xpath: "//div[contains(@class,'spec-categories')]" 
+                  click: "//span[normalize-space()='Specifications']"
+            type: list-and
+
+        reviews: 
+            click: 
+                xpath: 
+                    - "//button[contains(@aria-controls, 'reviews-accordion')]"
+                    - "//a[contains(@class, 'see-all-reviews')]"
+                type: list-and
+            inner_envelope: 
+                xpath: "//li[@class='review-item']"
+                type: text
+            review:
+                title:
+                    xpath: "//h4[contains(@class, 'review-title')]"
+                    type: text
+                score: 
+                    xpath: "//div[@class='review-rating']"
+                    type: text
+                body: 
+                    xpath: "//div[contains(@class, 'review-body') ]"
+                    type: text
+            next:
+                xpath: "//a[@data-track='Page next' and @aria-disabled='false'"
+                type: text                
+            type: reviews
+    next: 
+        xpath: "//a[contains(@class, 'next') and contains(@class, 'sku')]"
+        type: text
+
+kaystore:
+    outer_envelope:
+        xpath: "//div[@class='product-inner product-item__inner']"
+        type: text
+    inner_envelope:
+        #xpath: "//div[@class='product-inner product-item__inner']"
+        #xpath: "//div[@class,'product-outer product-item__outer']"
+        xpath: "//div[@class='product-loop-header product-item__header']"
+        type: text
+    product:      
+        price:
+            xpath: "//span[@class='electro-price']"
+            type: text
+        product_name:
+            xpath: "//h1[contains(@class,'product_title')]"
+            type: text
+        product_features:
+            xpath: "//div[@id='tab-specification']"
+            type: text
+    next: 
+        xpath: "//ul[@class='page-numbers']//a[@class='next page-numbers']"
+        type: text
