@@ -1,4 +1,5 @@
-common: 
+common:
+    # XPath for the search bar
     search: 
         xpath: "//input[contains(@id, 'search')]"
         type: text
@@ -127,8 +128,6 @@ kaystore:
         xpath: "//div[@class='product-inner product-item__inner']"
         type: text
     inner_envelope:
-        #xpath: "//div[@class='product-inner product-item__inner']"
-        #xpath: "//div[@class,'product-outer product-item__outer']"
         xpath: "//div[@class='product-loop-header product-item__header']"
         type: text
     product:      
