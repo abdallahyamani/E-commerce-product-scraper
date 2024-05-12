@@ -1,4 +1,4 @@
-# E-commerce Web Scraper
+# E-commerce Product Scraper
 This project is a Python-based web scraper designed to extract product information from various e-commerce websites. It utilizes Selenium for web automation and BeautifulSoup for parsing HTML content.
 
 ## Features
